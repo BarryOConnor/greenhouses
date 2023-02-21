@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+
+#Look for the word "products" followed by slash, product title, slash, id number
+#RewriteRule  ^genre/([0-9a-z]+)/$   /genre.php?id=$1 [NC,L]
+AddHandler application/x-httpd-alt-php56___lsphp .php
+DirectoryIndex index.html index.php index.htm index.shtm index.shtml default.html
