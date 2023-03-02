@@ -1,0 +1,33 @@
+https://api.sunrise-sunset.org/json?lat=***REMOVED***&lng=***REMOVED***&date=2023-02-24
+
+
+_________________________________________________________
+
+Today 23/02/2023 17:32 - 24/02/2023 17:34  (PARTIAL)
+Daytime Average Temp:  25.00C
+Nighttime Average Temp: 10.00C
+
+Min Temp: 12.00C          Max Temp: 35.00C
+Min Humidity: 35.00%      Max Humidity: 50.00%
+
+_________________________________________________________
+
+Yesterday 22/02/2023 17:30 - 23/02/2023 17:32 
+Daytime Average Temp:  25.00C
+Nighttime Average Temp: 10.00C
+
+Min Temp: 12.00C          Max Temp: 35.00C
+Min Humidity: 35.00%      Max Humidity: 50.00%
+_________________________________________________________
+
+
+Weekly 16/02/2023 17:19 - 23/02/2023 17:32
+Average Temp Day:  25.00C
+Average Temp Night: 10.00C
+
+Min Temp: 12.00C          Max Temp: 35.00C
+Min Humidity: 35.00%      Max Humidity: 50.00%
+
+_________________________________________________________
+
+

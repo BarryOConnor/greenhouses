@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:padding="8dp"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:background="@color/mid"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Greenhouse 1"
+            android:textStyle="bold"
+            android:id="@+id/tvName"
+            android:textSize="28sp"
+            android:textColor="@color/lightest"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="40"
+                android:text="Temperature: "
+                android:textSize="20sp"
+                android:id="@+id/tvTemperatureLabel"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="60"
+                android:text="24.56 °C"
+                android:textSize="20sp"
+                android:id="@+id/tvTemperature"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:text="Humidity: "
+            android:textSize="20sp"
+            android:id="@+id/tvHumidityLabel"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="60"
+            android:text="24.56 %"
+            android:textSize="20sp"
+            android:id="@+id/tvHumidity"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:text="Recorded at: "
+            android:textSize="20sp"
+            android:id="@+id/tvTakenLabel"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="60"
+            android:text=""
+            android:textSize="20sp"
+            android:id="@+id/tvTaken"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

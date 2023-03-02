@@ -35,16 +35,6 @@ echo '<table border="0" cellspacing="2" cellpadding="2">
           <td> <font face="Arial">taken</font> </td> 
       </tr>';
 
-
-    foreach ($result as $row) {
-        echo '<tr> 
-                  <td>'.$row['id'].'</td> 
-                  <td>'.$row['sensor_id'].'</td> 
-                  <td>'.$row['temperature'].'</td> 
-                  <td>'.$row['humidity'].'</td> 
-                  <td>'.$row['taken'].'</td> 
-              </tr>';
-    }
 $conn = null;
 ?>
 </body>
