@@ -4,7 +4,7 @@
 
 #include "DHT.h"
 
-#define DEBUG 1
+#define DEBUG 0
 
 #define DHTPIN 2        // what digital pin we're connected to
 #define DHTTYPE DHT22   // DHT 22
@@ -41,14 +41,14 @@ typedef struct {
 
 RTCStore rtcData;
 
-const char* ssid = "SKY5SH49";
-const char* password = "2LUdWszwig4D";
+const char* ssid = ***REMOVED***;
+const char* password = ***REMOVED***;
 const char* host = ***REMOVED***;
 const char* NTPaddress = "europe.pool.ntp.org";
 
 char url[52];
-char temperature[7];
-char humidity[7];
+char temperature[10];
+char humidity[10];
 const char authorization_id[9] = "***REMOVED***";
 const int greenhouse_id = 1;
 double delayMinutes = 0;
@@ -75,8 +75,8 @@ void getSensorData(char *temp, char *humidity){
   // collect data
   float h = dht.readHumidity();
   float t = dht.readTemperature();
-  dtostrf(t,5,2,temperature);
-  dtostrf(h,5,2,humidity);
+  dtostrf(t,1,2,temperature);
+  dtostrf(h,1,2,humidity);
 }
 
 void readFromRTCMemory() {

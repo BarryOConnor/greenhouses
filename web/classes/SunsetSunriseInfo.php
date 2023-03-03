@@ -15,8 +15,6 @@
 
      public static function newWithValues($message, $yesterday, $today) {
           $obj = new self;
-          //self::display($message . '/yesterday', $yesterday);
-          //self::display($message . '/today', $today);
           $obj->start_sunset = date("Y-m-d H:i:s",$yesterday['sunset']);
           $obj->sunrise = date("Y-m-d H:i:s",$today['sunrise']);
           $obj->end_sunset = date("Y-m-d H:i:s",$today['sunset']);

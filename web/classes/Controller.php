@@ -47,8 +47,8 @@
                     case 'data':
                          $this->getGreenhouseData();
                          break;
-                    case 'test':
-                         $this->testClass();
+                    case 'cron':
+                         $this->doCronJobActivities();
                          break;
                     default :
                          $this->displayMessageWithData(self::MESSAGES["MISSING_PARAMETERS"], "Command1");
@@ -132,6 +132,19 @@
           return true;      
      }
 
+
+     private function getNumberOfSensors() {
+          $stmt = $this->pdo->prepare('SELECT MAX(sensor_id) as num_sensors from greenhouses');
+          if ($stmt->execute()) {
+               foreach ($stmt as $row) {
+                    echo  $row['num_sensors'];
+                    return $row['num_sensors'];
+               }
+          } else {
+               echo 0;
+               return 0;
+          }  
+     }
      
 
      private function saveSensorData() {
@@ -193,19 +206,52 @@
                }   
           }   */
      }
-
-
-
-     private function testClass(){
-          $today = SunsetSunriseInfo::newToday();
-          $yesterday = SunsetSunriseInfo::newYesterday();
-          $week = SunsetSunriseInfo::newWeek();
-          
-          echo "TODAY SS yesterday: " . $today->start_sunset . " | SR today: " . $today->sunrise . " | SS Today: ". $today->end_sunset ."\n";
-          echo "YESTERDAY SS yesterday: " . $yesterday->start_sunset . " | SR today: " . $yesterday->sunrise . " | SS Today: ". $yesterday->end_sunset ."\n";
-          foreach($week->week as $week_day) {
-               echo "WEEK SS yesterday: " . $week_day->start_sunset . " | SR today: " . $week_day->sunrise . " | SS Today: ". $week_day->end_sunset ."\n";
+     
+     private function doCronJobActivities(){
+          /*$stmt = $this->pdo->prepare('SELECT * FROM sun_info WHERE day = ?;');
+          $stmt->execute([date("Y-m-d")]);
+          $count = $stmt->fetchColumn();
+          if ($count > 0) {
+               $final_stmt = $this->pdo->prepare('UPDATE sun_info SET sunrise = ?, sunset = ? WHERE day = ?;');
+          } else {
+               $final_stmt = $this->pdo->prepare('INSERT INTO sun_info(sunrise, sunset, day) VALUES (?, ?, ?);');
           }
+          $today = SunsetSunriseInfo::newToday();
+          if ($final_stmt->execute([$today->sunrise,$today->end_sunset, date("Y-m-d")])) {
+               echo self::MESSAGES["OK"];
+          } else {
+               $this->displayErrorMessage(self::MESSAGES["GENERIC_ERROR"], "Failed to save data!");
+          }*/
+          $num_sensors = $this->getNumberOfSensors();
+          $error_messages = "";
+
+          if($num_sensors > 0) {
+               $today = SunsetSunriseInfo::newYesterday();
+               for($sensor = 1; $sensor <= $num_sensors; $sensor++) {
+                    $cron_stmt = $this->pdo->prepare('SELECT (SELECT AVG(temperature) FROM greenhouses WHERE sensor_id = ? AND taken BETWEEN ? AND ?) AS avg_night, (SELECT AVG(temperature) FROM greenhouses WHERE sensor_id = ? AND taken BETWEEN ? AND ?) AS avg_day, MIN(temperature) AS min_temp, MAX(temperature) AS max_temp, MIN(humidity) AS min_humid, MAX(humidity) AS max_humid FROM greenhouses WHERE sensor_id = ? AND taken BETWEEN ? AND ?;');
+                    if($cron_stmt->execute([$sensor, $today->start_sunset, $today->sunrise, $sensor, $today->sunrise, $today->end_sunset, $sensor, $today->start_sunset, $today->end_sunset])){
+                         foreach ($cron_stmt as $row) {
+                              $count_stmt = $this->pdo->prepare("SELECT COUNT(id) FROM calculated WHERE day = ?");
+                              $count_stmt->execute([date("Y-m-d")]);
+                              $count = $count_stmt->fetchColumn();
+                              if ($count > 0) {
+                                   $insert_stmt = $this->pdo->prepare('INSERT INTO calculated(day, sensor_id, avg_night, avg_day, min_temp, max_temp, min_humid, max_humid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+                                   if ($insert_stmt->execute([date("Y-m-d"), $sensor, $row['avg_night'], $row['avg_day'], $row['min_temp'], $row['max_temp'], $row['min_humid'], $row['max_humid']])) {
+                                        //OK
+                                   } else {
+                                        $error_messages .= "Failed to save data for cron : sensor id = " . $sensor . "\n\r";
+                                   } 
+                              }
+                         }
+                    } else {
+                         $error_messages .= "Failed to retrieve data for cron : sensor id = " . $sensor . "\n\r";
+                    }
+               }
+          }
+          if ($error_messages != "") {
+               mail("***REMOVED***", "Issue With Greenhouse Cron Job", $error_messages);
+          }
+                    
      }
 }
 ?>
