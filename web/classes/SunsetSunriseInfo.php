@@ -4,8 +4,8 @@
      public $end_sunset;
      public $day;
 
-     private static $latitude = ***REMOVED***;
-     private static $longitude = ***REMOVED***;
+     private static $latitude = YOUR LATITUDE HERE;
+     private static $longitude = YOUR LONGITUDE HERE;
 
      private function __construct() {}
 

@@ -2,7 +2,7 @@
      private $pdo;
      private $authorised;
 
-     private $email_address = "***REMOVED***";
+     private $email_address = "YOUR EMAIL ADDRESS HERE";
 
      private $parameters = array(
          "Auth" => "a",

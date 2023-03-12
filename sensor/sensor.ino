@@ -41,16 +41,16 @@ typedef struct {
 
 RTCStore rtcData;
 
-const char* ssid = "***REMOVED***";
-const char* password = "***REMOVED***";
-const char* host = "***REMOVED***";
+const char* ssid = "WIFI SSID HERE";
+const char* password = "WIFI PASSWORD HERE";
+const char* host = "HOST HERE";
 const char* NTPaddress = "europe.pool.ntp.org";
 
 char url[52];
 char temperature[10];
 char humidity[10];
-const char authorization_id[9] = "***REMOVED***";
-const int greenhouse_id = 1;
+const char authorization_id[9] = "AUTHORIZATION TOKEN HERE";
+const int greenhouse_id = ID VALUE HERE;
 double delayMinutes = 0;
 bool dataValid = false;
 
