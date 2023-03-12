@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.DarrensGreenhouses">
-        <activity android:name=".DGH" android:launchMode="singleTop" android:configChanges="orientation|screenSize">
+        <activity android:name=".DGH" android:launchMode="singleTop" android:configChanges="orientation|screenSize" android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

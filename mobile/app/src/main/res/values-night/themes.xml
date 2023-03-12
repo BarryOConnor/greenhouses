@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 <!-- Base application theme. -->
-<style name="Theme.DarrensGreenhouses" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+<style name="Theme.DarrensGreenhouses" parent="Theme.AppCompat.DayNight.DarkActionBar">
     <!-- Primary brand color. -->
     <item name="colorPrimary">@color/dark</item>
     <item name="colorPrimaryVariant">@color/mid</item>
@@ -16,24 +16,6 @@
     <!-- Customize your theme here. -->
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
-    <item name="textInputStyle">@style/AppTheme.TextInputLayout.OutlinedBox</item>
     <!--<item name="android:listDivider">@drawable/vertical_divider_dark</item>-->
 </style>
-
-<style name="AppTheme.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-    <item name="colorOnSurface">@android:color/white</item>
-    <item name="boxStrokeColor">@color/dark</item>
-    <!--<item name="android:background">@drawable/text_input_background</item>-->
-    <!-- The color of the label when it is collapsed and the text field is active -->
-    <item name="hintTextColor">@android:color/white</item>
-    <!-- The color of the label in all other text field states (such as resting and disabled) -->
-    <item name="android:textColorHint">@android:color/white</item>
-    <item name="boxStrokeWidth">1dp</item>
-    <item name="boxStrokeWidthFocused">2dp</item>
-    <!-- error colours -->
-    <item name="boxStrokeErrorColor">@android:color/white</item>
-    <item name="errorTextColor">@android:color/white</item>
-    <item name="errorIconTint">@android:color/white</item>
-</style>
-
 </resources>

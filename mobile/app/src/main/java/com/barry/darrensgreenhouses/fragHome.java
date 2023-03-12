@@ -2,6 +2,7 @@ package com.barry.darrensgreenhouses;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +34,7 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     private RecyclerView mrvGreenhouses;
     private GreenhouseAdapter greenhouseAdapter;
-    private String url = "@strings/hostname" + "/api.php?a=" + "@strings/hostname" + "&c=latest";
+    private String url = "";
     private ProgressDialog dialog;
 
     public fragHome() {
@@ -42,6 +43,8 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     public static fragHome newInstance() {
         fragHome fragment = new fragHome();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
         return fragment;
     }
     /**
@@ -116,7 +119,7 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     void loadGreenhouseData(){
-
+        url = getResources().getString(R.string.hostname) + "/api.php?a=" + getResources().getString(R.string.token) + "&c=latest";
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String string) {

@@ -58,7 +58,7 @@ public class fragViewGreenhouse extends Fragment implements SwipeRefreshLayout.O
     private TextView mtvWeekMinHumid;
     private TextView mtvWeekMaxHumid;
 
-    private String url = "@strings/hostname" + "/api.php?c=data&a=" + "@strings/token" + "&g=";
+    private String url = "";
     private ProgressDialog dialog;
 
     public fragViewGreenhouse() {
@@ -67,6 +67,8 @@ public class fragViewGreenhouse extends Fragment implements SwipeRefreshLayout.O
 
     public static fragViewGreenhouse newInstance() {
         fragViewGreenhouse fragment = new fragViewGreenhouse();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
         return fragment;
     }
     /**
@@ -115,8 +117,6 @@ public class fragViewGreenhouse extends Fragment implements SwipeRefreshLayout.O
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        DGH dgh = (DGH) getContext();
-        url += dgh.getCurrentGreenhouse();
 
         mtvGreenhouse = view.findViewById(R.id.tvGreenhouse);
         mtvTodayDate = view.findViewById(R.id.tvTodayDate);
@@ -150,7 +150,7 @@ public class fragViewGreenhouse extends Fragment implements SwipeRefreshLayout.O
         dialog.setMessage("Loading....");
         dialog.show();
         DGH dgh = (DGH) getContext();
-
+        url = getResources().getString(R.string.hostname) + "/api.php?a=" + getResources().getString(R.string.token) + "&c=data&g=" + dgh.getCurrentGreenhouse();
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String string) {

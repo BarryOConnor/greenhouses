@@ -2,6 +2,7 @@ package com.barry.darrensgreenhouses;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -34,11 +35,19 @@ public class DGH extends AppCompatActivity {
         });
 
         if(savedInstanceState == null) {
+            fragHome homeFragment = fragHome.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.mainFrame, fragHome.newInstance())
+                    .replace(R.id.mainFrame, homeFragment)
                     .commit();
         }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     public void replaceFragment(Fragment fragment, boolean remove) {

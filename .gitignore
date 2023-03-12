@@ -19,3 +19,4 @@ GITHUB/web/classes/Controller.php
 GITHUB/web/classes/SunsetSunriseInfo.php
 GITHUB/web/cronjob.php
 GITHUB/web/includes/conx.php
+mobile/app/build/**
