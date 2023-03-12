@@ -6,4 +6,5 @@ sensor/inols-clangd-err.log
 access.txt
 replace.txt
 web/includes/conx.php
+.gitignore
 *.log
