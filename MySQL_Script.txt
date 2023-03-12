@@ -1,0 +1,41 @@
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+
+CREATE DATABASE IF NOT EXISTS `greenhouses` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `greenhouses`;
+
+CREATE TABLE `authorised` (
+  `id` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `calculated` (
+  `day` date NOT NULL,
+  `sensor_id` int(11) NOT NULL,
+  `avg_night` decimal(5,2) NOT NULL,
+  `avg_day` decimal(5,2) NOT NULL,
+  `min_temp` decimal(5,2) NOT NULL,
+  `max_temp` decimal(5,2) NOT NULL,
+  `min_humid` decimal(5,2) NOT NULL,
+  `max_humid` decimal(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `greenhouses` (
+  `id` int(11) NOT NULL,
+  `sensor_id` int(11) NOT NULL,
+  `temperature` decimal(5,2) NOT NULL,
+  `humidity` decimal(5,2) NOT NULL,
+  `taken` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `authorised`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `calculated`
+  ADD PRIMARY KEY (`day`,`sensor_id`);
+
+ALTER TABLE `greenhouses`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `greenhouses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;

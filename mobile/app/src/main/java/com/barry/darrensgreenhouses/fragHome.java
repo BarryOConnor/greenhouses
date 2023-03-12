@@ -33,7 +33,7 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
     private RecyclerView mrvGreenhouses;
     private GreenhouseAdapter greenhouseAdapter;
-    private String url = "***REMOVED***/api.php?a=***REMOVED***&c=latest";
+    private String url = "@strings/hostname" + "/api.php?a=" + "@strings/hostname" + "&c=latest";
     private ProgressDialog dialog;
 
     public fragHome() {

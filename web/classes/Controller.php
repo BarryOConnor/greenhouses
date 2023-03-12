@@ -2,6 +2,8 @@
      private $pdo;
      private $authorised;
 
+     private $email_address = "***REMOVED***";
+
      private $parameters = array(
          "Auth" => "a",
          "Command" => "c",
@@ -249,7 +251,7 @@
                }
           }
           if ($error_messages != "") {
-               mail("***REMOVED***", "Issue With Greenhouse Cron Job", $error_messages);
+               mail($email_address, "Issue With Greenhouse Cron Job", $error_messages);
           }                     
      }
 }
