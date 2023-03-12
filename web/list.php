@@ -5,12 +5,9 @@
      <title>ESP8266 Temperature & Humidity DHT11 Sensor</title>
 </head>
 <body>
-<?php
 
-$host = "***REMOVED***";
-$user = "***REMOVED***";
-$pass = "***REMOVED***";
-$db = "***REMOVED***";
+<?php
+include 'includes/conx.php';
 
 $dsn = "mysql:host=$host;dbname=$db;";
 $options = [
