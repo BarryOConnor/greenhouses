@@ -58,7 +58,7 @@ public class fragViewGreenhouse extends Fragment implements SwipeRefreshLayout.O
     private TextView mtvWeekMinHumid;
     private TextView mtvWeekMaxHumid;
 
-    private String url = "http://***REMOVED***/api.php?c=data&a=***REMOVED***&g=";
+    private String url = "***REMOVED***/api.php?c=data&a=***REMOVED***&g=";
     private ProgressDialog dialog;
 
     public fragViewGreenhouse() {

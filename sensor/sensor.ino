@@ -41,8 +41,8 @@ typedef struct {
 
 RTCStore rtcData;
 
-const char* ssid = ***REMOVED***;
-const char* password = ***REMOVED***;
+const char* ssid = "***REMOVED***";
+const char* password = "***REMOVED***";
 const char* host = "***REMOVED***";
 const char* NTPaddress = "europe.pool.ntp.org";
 

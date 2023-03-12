@@ -7,10 +7,10 @@
 <body>
 <?php
 
-$host = ***REMOVED***;
-$user = ***REMOVED***;
-$pass = ***REMOVED***;
-$db = ***REMOVED***;
+$host = "***REMOVED***";
+$user = "***REMOVED***";
+$pass = "***REMOVED***";
+$db = "***REMOVED***";
 
 $dsn = "mysql:host=$host;dbname=$db;";
 $options = [
