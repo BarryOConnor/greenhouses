@@ -96,8 +96,10 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mrvGreenhouses = view.findViewById(R.id.rvGreenhouses);
-        //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mrvGreenhouses.getContext(), LinearLayoutManager.VERTICAL);
-        //mrvGreenhouses.addItemDecoration(dividerItemDecoration);
+        mSwipeRefreshLayout.setRefreshing(true);
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Loading....");
+        dialog.show();
 
         loadGreenhouseData();
 
@@ -106,24 +108,18 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             public void onClick(View view, int position) {
                 String selectedItem = ((TextView) mrvGreenhouses.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.tvName)).getText().toString();
                 selectedItem = selectedItem.replace("Greenhouse ", "");
-                DGH dgh = (DGH) getContext();
+                ((DGH)getContext()).setCurrentGreenhouse(selectedItem);
+                ((DGH)getActivity()).replaceFragment(new fragViewGreenhouse(),false);
 
-                dgh.setCurrentGreenhouse(selectedItem);
-                dgh.replaceFragment(new fragViewGreenhouse(), false);
             }
         }));
     }
 
     void loadGreenhouseData(){
-        mSwipeRefreshLayout.setRefreshing(true);
-        dialog = new ProgressDialog(getContext());
-        dialog.setMessage("Loading....");
-        dialog.show();
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String string) {
-
                 parseJsonData(string);
             }
         }, new Response.ErrorListener() {
@@ -140,6 +136,8 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     }
 
     void parseJsonData(String jsonString) {
+        mSwipeRefreshLayout.setRefreshing(false);
+        dialog.dismiss();
         try {
             JSONObject object = new JSONObject(jsonString);
             JSONArray greenhouseArray = object.getJSONArray("greenhouses");
@@ -155,11 +153,10 @@ public class fragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             greenhouseAdapter = new GreenhouseAdapter(greenhouses, getContext());
             mrvGreenhouses.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             mrvGreenhouses.setAdapter(greenhouseAdapter);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mSwipeRefreshLayout.setRefreshing(false);
-        dialog.dismiss();
     }
 }
 

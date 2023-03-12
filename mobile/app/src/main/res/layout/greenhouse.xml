@@ -29,71 +29,84 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tvTemperatureLabel"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="40"
                 android:text="Temperature: "
-                android:textSize="20sp"
-                android:id="@+id/tvTemperatureLabel"
                 android:textColor="@android:color/white"
-                android:layout_height="wrap_content"/>
+                android:textSize="16sp" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="60"
-                android:text="24.56 °C"
-                android:textSize="20sp"
                 android:id="@+id/tvTemperature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:padding="5sp"
+                android:background="@drawable/rounded_corner"
+                android:text="24.56 °C"
                 android:textColor="@android:color/white"
-                android:layout_height="wrap_content"/>
+                android:textSize="16sp" />
 
 
         </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="40"
-            android:text="Humidity: "
-            android:textSize="20sp"
-            android:id="@+id/tvHumidityLabel"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="60"
-            android:text="24.56 %"
-            android:textSize="20sp"
-            android:id="@+id/tvHumidity"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="40"
-            android:text="Recorded at: "
-            android:textSize="20sp"
-            android:id="@+id/tvTakenLabel"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="60"
-            android:text=""
-            android:textSize="20sp"
-            android:id="@+id/tvTaken"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvHumidityLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Humidity: "
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:background="@drawable/rounded_corner"
+                android:padding="5sp"
+                android:text="24.56 %"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTakenLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Recorded at: "
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTaken"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:background="@drawable/rounded_corner"
+                android:padding="5sp"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

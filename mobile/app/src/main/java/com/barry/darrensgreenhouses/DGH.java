@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,7 +44,7 @@ public class DGH extends AppCompatActivity {
     public void replaceFragment(Fragment fragment, boolean remove) {
         String[] result = fragment.toString().split("[{]");
         if(remove){
-            getSupportFragmentManager().popBackStack(result[0],0);
+            getSupportFragmentManager().popBackStack();
         } else {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.mainFrame, fragment, fragment.toString())

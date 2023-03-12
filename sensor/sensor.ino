@@ -4,7 +4,7 @@
 
 #include "DHT.h"
 
-#define DEBUG 0
+#define DEBUG 1
 
 #define DHTPIN 2        // what digital pin we're connected to
 #define DHTTYPE DHT22   // DHT 22

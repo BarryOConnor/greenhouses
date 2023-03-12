@@ -2,7 +2,7 @@
      public $start_sunset;
      public $sunrise;
      public $end_sunset;
-     public $week = array();
+     public $day;
 
      private static $latitude = ***REMOVED***;
      private static $longitude = ***REMOVED***;
@@ -18,6 +18,7 @@
           $obj->start_sunset = date("Y-m-d H:i:s",$yesterday['sunset']);
           $obj->sunrise = date("Y-m-d H:i:s",$today['sunrise']);
           $obj->end_sunset = date("Y-m-d H:i:s",$today['sunset']);
+          $obj->day = date("Y-m-d", $today['sunrise']);
           return $obj;
      }
 
@@ -38,15 +39,15 @@
      }
 
      public static function newWeek() {
-          $obj = new self;
-          for($i=-2; $i >= -8; $i--) {
-               $yesterday = mktime(1, 0, 0, date("m"), date("d")+$i, date("Y"));
-               $today = mktime(1, 0, 0, date("m"), date("d")+($i + -1), date("Y"));
+          $week = array();
+          for($i=-1; $i >= -7; $i--) {
+               $yesterday = mktime(1, 0, 0, date("m"), date("d")+($i + -1), date("Y"));
+               $today = mktime(1, 0, 0, date("m"), date("d")+$i, date("Y"));
                $sun_info_yesterday = date_sun_info($yesterday, self::$latitude, self::$longitude);
                $sun_info_today = date_sun_info($today, self::$latitude, self::$longitude);
-               array_push($obj->week, self::newWithValues("newWeek", $sun_info_yesterday, $sun_info_today));
+               array_push($week, self::newWithValues("newWeek", $sun_info_yesterday, $sun_info_today));
           }
-          return $obj;
+          return $week;
      }
 }
 ?>
