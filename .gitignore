@@ -7,3 +7,15 @@ access.txt
 replace.txt
 .gitignore
 *.log
+BUILD/mobile/app/src/main/res/values/strings.xml
+BUILD/sensor/sensor.ino
+BUILD/web/classes/Controller.php
+BUILD/web/classes/SunsetSunriseInfo.php
+BUILD/web/cronjob.php
+BUILD/web/includes/conx.php
+GITHUB/mobile/app/src/main/res/values/strings.xml
+GITHUB/sensor/sensor.ino
+GITHUB/web/classes/Controller.php
+GITHUB/web/classes/SunsetSunriseInfo.php
+GITHUB/web/cronjob.php
+GITHUB/web/includes/conx.php
